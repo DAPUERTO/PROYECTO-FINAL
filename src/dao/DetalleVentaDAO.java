@@ -12,11 +12,17 @@ import java.util.List;
 
 public class DetalleVentaDAO {
 
+    /**
+     * Inserta un detalle de venta en la base de datos.
+     * 
+     * @param d Objeto DetalleVenta con los datos a registrar.
+     * @return true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertar(DetalleVenta d) {
         String sql = "INSERT INTO DETALLE_VENTA(id_venta, id_producto, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = Conexiondb.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, d.getIdVenta());
             ps.setInt(2, d.getIdProducto());
@@ -32,12 +38,18 @@ public class DetalleVentaDAO {
         }
     }
 
+    /**
+     * Obtiene una lista de los detalles de una venta específica.
+     * 
+     * @param idVenta Identificador de la venta.
+     * @return Lista de objetos DetalleVenta.
+     */
     public List<DetalleVenta> listarPorVenta(int idVenta) {
         List<DetalleVenta> lista = new ArrayList<>();
         String sql = "SELECT * FROM DETALLE_VENTA WHERE id_venta=?";
 
         try (Connection con = Conexiondb.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, idVenta);
             ResultSet rs = ps.executeQuery();

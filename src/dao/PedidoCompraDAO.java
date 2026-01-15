@@ -11,10 +11,16 @@ import java.util.List;
 
 public class PedidoCompraDAO {
 
+    /**
+     * Inserta un nuevo pedido de compra en la base de datos.
+     * 
+     * @param p Objeto PedidoCompra con los datos del pedido.
+     * @return true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertar(PedidoCompra p) {
         String sql = "INSERT INTO PEDIDOS_COMPRA(id_proveedor, fecha_pedido, fecha_recepcion, monto_total, estado_pedido) VALUES (?,?,?,?,?)";
         try (Connection con = Conexiondb.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, p.getIdProveedor());
             ps.setDate(2, p.getFechaPedido());
@@ -28,12 +34,17 @@ public class PedidoCompraDAO {
         }
     }
 
+    /**
+     * Obtiene una lista de todos los pedidos de compra registrados.
+     * 
+     * @return Lista de objetos PedidoCompra.
+     */
     public List<PedidoCompra> listar() {
         List<PedidoCompra> lista = new ArrayList<>();
         String sql = "SELECT * FROM PEDIDOS_COMPRA";
         try (Connection con = Conexiondb.getConexion();
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 PedidoCompra p = new PedidoCompra();

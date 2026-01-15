@@ -11,10 +11,16 @@ import java.util.List;
 
 public class ProveedorDAO {
 
+    /**
+     * Inserta un nuevo proveedor en la base de datos.
+     * 
+     * @param p Objeto Proveedor con los datos a registrar.
+     * @return true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertar(Proveedor p) {
         String sql = "INSERT INTO PROVEEDORES(nombre, numero_identificacion, celular, direccion, correo) VALUES (?,?,?,?,?)";
         try (Connection con = Conexiondb.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, p.getNombre());
             ps.setString(2, p.getNumeroIdentificacion());
@@ -28,12 +34,17 @@ public class ProveedorDAO {
         }
     }
 
+    /**
+     * Obtiene una lista de todos los proveedores registrados.
+     * 
+     * @return Lista de objetos Proveedor.
+     */
     public List<Proveedor> listar() {
         List<Proveedor> lista = new ArrayList<>();
         String sql = "SELECT * FROM PROVEEDORES";
         try (Connection con = Conexiondb.getConexion();
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 Proveedor p = new Proveedor();

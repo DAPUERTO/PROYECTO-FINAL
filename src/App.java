@@ -159,3 +159,82 @@
 
 //====================================================================================
 
+
+//PRUEBAS USUARIO SERVICE
+
+import services.UsuarioService;
+import models.Usuario;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        UsuarioService usuarioService = new UsuarioService();
+
+        // ===============================
+        // 1️ CREAR USUARIO
+        // ===============================
+        Usuario usuario = new Usuario();
+        usuario.setNombreUsuario("admin");
+        usuario.setPasswordHash("1234"); // en texto plano (service la cifra)
+        usuario.setNombreCompleto("Administrador General");
+        usuario.setEstado(true);
+
+        boolean creado = usuarioService.crearUsuario(usuario);
+        System.out.println("Usuario creado: " + creado);
+
+        // ===============================
+        // 2️ INTENTAR LOGIN CORRECTO
+        // ===============================
+        Usuario loginOk = usuarioService.login("admin", "1234");
+
+        if (loginOk != null) {
+            System.out.println("Login exitoso");
+            System.out.println("Bienvenido: " + loginOk.getNombreCompleto());
+        } else {
+            System.out.println("Login fallido");
+        }
+
+        // ===============================
+        // 3️ LOGIN CON CONTRASEÑA INCORRECTA
+        // ===============================
+        Usuario loginError = usuarioService.login("admin", "0000");
+        System.out.println(loginError == null
+                ? "Contraseña incorrecta detectada correctamente"
+                : "Error de validación");
+
+        // ===============================
+        // 4️ DESACTIVAR USUARIO
+        // ===============================
+        boolean desactivado = usuarioService.cambiarEstado(1, false);
+        System.out.println("Usuario desactivado: " + desactivado);
+
+        // ===============================
+        // 5️ INTENTAR LOGIN CON USUARIO INACTIVO
+        // ===============================
+        Usuario loginInactivo = usuarioService.login("admin", "1234");
+        System.out.println(loginInactivo == null
+                ? "Acceso bloqueado por usuario inactivo"
+                : "Error: no debería permitir acceso");
+
+        // ===============================
+        // 6️ LISTAR USUARIOS
+        // ===============================
+        System.out.println("Listado de usuarios:");
+        usuarioService.listarUsuarios().forEach(u ->
+                System.out.println(
+                        u.getIdUsuario() + " - " +
+                        u.getNombreUsuario() + " - " +
+                        (u.isEstado() ? "Activo" : "Inactivo")
+                )
+        );
+    }
+}
+
+
+
+
+//===========PRUEBAS PRODUCTO SERVICE================
+
+
+//==========================SIGUIENTE PRUEBA==========================================================================0
