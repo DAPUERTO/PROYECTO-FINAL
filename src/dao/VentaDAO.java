@@ -14,11 +14,20 @@ public class VentaDAO {
 
     // 1️ REGISTRAR VENTA
     public int registrarVenta(Venta v) {
+        try (Connection con = Conexiondb.getConexion()) {
+            return registrarVenta(v, con);
+        } catch (SQLException e) {
+            System.out.println("Error al registrar venta: " + e.getMessage());
+            return 0;
+        }
+    }
+
+    // 1.1 REGISTRAR VENTA
+    public int registrarVenta(Venta v, Connection con) throws SQLException {
         int idVenta = 0;
         String sql = "INSERT INTO VENTAS(fecha_venta, hora_venta, total_pagar, estado, id_cliente, id_usuario) VALUES (CURDATE(), CURTIME(), ?, ?, ?, ?)";
 
-        try (Connection con = Conexiondb.getConexion();
-                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setDouble(1, v.getTotalPagar());
             ps.setString(2, v.getEstado());
@@ -31,9 +40,6 @@ public class VentaDAO {
             if (rs.next()) {
                 idVenta = rs.getInt(1);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Error al registrar venta: " + e.getMessage());
         }
         return idVenta;
     }

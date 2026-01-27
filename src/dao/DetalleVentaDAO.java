@@ -19,10 +19,27 @@ public class DetalleVentaDAO {
      * @return true si la inserción fue exitosa, false en caso contrario.
      */
     public boolean insertar(DetalleVenta d) {
+        try (Connection con = Conexiondb.getConexion()) {
+            return insertar(d, con);
+        } catch (SQLException e) {
+            System.out.println("Error al insertar detalle venta: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Inserta un detalle de venta usando una conexión existente (Para
+     * Transacciones).
+     * 
+     * @param d   Objeto DetalleVenta.
+     * @param con Conexión activa.
+     * @return true si se insertó correctamente.
+     * @throws SQLException Si ocurre un error SQL.
+     */
+    public boolean insertar(DetalleVenta d, Connection con) throws SQLException {
         String sql = "INSERT INTO DETALLE_VENTA(id_venta, id_producto, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection con = Conexiondb.getConexion();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, d.getIdVenta());
             ps.setInt(2, d.getIdProducto());
@@ -31,10 +48,6 @@ public class DetalleVentaDAO {
             ps.setDouble(5, d.getSubtotal());
 
             return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error al insertar detalle venta: " + e.getMessage());
-            return false;
         }
     }
 
