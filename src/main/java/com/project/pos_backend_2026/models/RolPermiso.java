@@ -1,4 +1,4 @@
-package models;
+package com.project.pos_backend_2026.models;
 
 public class RolPermiso {
 

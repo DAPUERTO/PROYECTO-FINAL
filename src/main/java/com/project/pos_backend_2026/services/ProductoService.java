@@ -1,7 +1,7 @@
-package services;
+package com.project.pos_backend_2026.services;
 
-import dao.ProductoDAO;
-import models.Producto;
+import com.project.pos_backend_2026.dao.ProductoDAO;
+import com.project.pos_backend_2026.models.Producto;
 import java.util.List;
 
 public class ProductoService {

@@ -1,7 +1,7 @@
-package dao;
+package com.project.pos_backend_2026.dao;
 
-import config.Conexiondb;
-import models.Usuario;
+import com.project.pos_backend_2026.config.Conexiondb;
+import com.project.pos_backend_2026.models.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

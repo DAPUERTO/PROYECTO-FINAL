@@ -1,7 +1,4 @@
-package dao; // Paquete para objetos de acceso a datos
-
-import config.Conexiondb; // Importa la clase de configuración de la base de datos
-import models.Cliente; // Importa el modelo Cliente
+package com.project.pos_backend_2026.dao; // Paquete para objetos de acceso a datos
 
 import java.sql.Connection; // Importa la interfaz Connection
 import java.sql.PreparedStatement; // Importa la clase PreparedStatement para consultas seguras
@@ -9,6 +6,9 @@ import java.sql.ResultSet; // Importa la clase ResultSet para resultados de cons
 import java.sql.SQLException; // Importa la clase para manejo de excepciones SQL
 import java.util.ArrayList; // Importa la implementación de lista ArrayList
 import java.util.List; // Importa la interfaz List
+
+import com.project.pos_backend_2026.config.Conexiondb;
+import com.project.pos_backend_2026.models.Cliente;
 
 public class ClienteDAO { // Clase DAO para la entidad Cliente
 

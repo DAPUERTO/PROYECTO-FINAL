@@ -1,5 +1,4 @@
-// Declaración del paquete donde se encuentra esta clase
-package models;
+package com.project.pos_backend_2026.models;
 
 public class Usuario {
 

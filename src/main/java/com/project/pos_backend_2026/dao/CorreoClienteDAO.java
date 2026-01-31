@@ -1,9 +1,10 @@
-package dao;
+package com.project.pos_backend_2026.dao;
 
-import config.Conexiondb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import com.project.pos_backend_2026.config.Conexiondb;
 
 public class CorreoClienteDAO {
 

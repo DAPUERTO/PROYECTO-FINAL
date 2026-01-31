@@ -1,7 +1,4 @@
-package dao; // Paquete que contiene las clases de acceso a datos (DAO)
-
-import config.Conexiondb; // Importa la clase de configuración para la conexión a la base de datos
-import models.Categoria; // Importa la clase modelo Categoria que representa la entidad
+package com.project.pos_backend_2026.dao; // Paquete que contiene las clases de acceso a datos (DAO)
 
 import java.sql.Connection; // Importa la interfaz Connection para manejar la conexión a la BD
 import java.sql.PreparedStatement; // Importa PreparedStatement para ejecutar consultas SQL parametrizadas
@@ -9,6 +6,9 @@ import java.sql.ResultSet; // Importa ResultSet para manejar los resultados obte
 import java.sql.Statement; // Importa Statement para ejecutar sentencias SQL simples
 import java.util.ArrayList; // Importa ArrayList para manejar listas dinámicas
 import java.util.List; // Importa la interfaz List para colecciones ordenadas
+
+import com.project.pos_backend_2026.config.Conexiondb;
+import com.project.pos_backend_2026.models.Categoria;
 
 // Clase Data Access Object (DAO) para manejar las operaciones CRUD de la tabla CATEGORIAS
 public class CategoriaDAO {

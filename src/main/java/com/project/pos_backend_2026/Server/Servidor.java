@@ -15,7 +15,7 @@
 // }
 
 
-package Server;
+package com.project.pos_backend_2026.Server;
 
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;

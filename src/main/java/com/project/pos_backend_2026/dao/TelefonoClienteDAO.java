@@ -1,9 +1,9 @@
 //DAO AUXILIARES telefonos y correos clientes “Las tablas de teléfonos y correos se manejan con DAOs auxiliares porque son datos dependientes, por eso solo permiten inserción y eliminación.”
 
 
-package dao;
+package com.project.pos_backend_2026.dao;
 
-import config.Conexiondb;
+import com.project.pos_backend_2026.config.Conexiondb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

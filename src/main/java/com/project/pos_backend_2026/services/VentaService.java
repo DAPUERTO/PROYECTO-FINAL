@@ -1,10 +1,10 @@
-package services;
+package com.project.pos_backend_2026.services;
 
-import config.Conexiondb;
-import dao.VentaDAO;
-import dao.DetalleVentaDAO;
-import models.Venta;
-import models.DetalleVenta;
+import com.project.pos_backend_2026.config.Conexiondb;
+import com.project.pos_backend_2026.dao.VentaDAO;
+import com.project.pos_backend_2026.dao.DetalleVentaDAO;
+import com.project.pos_backend_2026.models.Venta;
+import com.project.pos_backend_2026.models.DetalleVenta;
 
 import java.sql.Connection;
 import java.sql.SQLException;

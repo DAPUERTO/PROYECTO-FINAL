@@ -1,13 +1,14 @@
-package dao;
+package com.project.pos_backend_2026.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import config.Conexiondb;
-import models.Rol;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.project.pos_backend_2026.config.Conexiondb;
+import com.project.pos_backend_2026.models.Rol;
 
 public class RolDAO {
 

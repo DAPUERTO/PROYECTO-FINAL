@@ -1,6 +1,6 @@
-package dao;
+package com.project.pos_backend_2026.dao;
 
-import config.Conexiondb;
+import com.project.pos_backend_2026.config.Conexiondb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

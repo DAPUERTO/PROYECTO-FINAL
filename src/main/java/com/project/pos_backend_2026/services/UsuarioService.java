@@ -1,7 +1,7 @@
-package services;
+package com.project.pos_backend_2026.services;
 
-import dao.UsuarioDAO;
-import models.Usuario;
+import com.project.pos_backend_2026.dao.UsuarioDAO;
+import com.project.pos_backend_2026.models.Usuario;
 import java.util.List;
 import java.security.MessageDigest;
 

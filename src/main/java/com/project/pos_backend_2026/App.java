@@ -1,24 +1,26 @@
-// import config.Conexiondb;
-// import java.sql.Connection;
-// import java.sql.SQLException;
+package com.project.pos_backend_2026;
 
-// public class App {
+import com.project.pos_backend_2026.config.Conexiondb;
+import java.sql.Connection;
+import java.sql.SQLException;
 
-//     public static void main(String[] args) {
-//         try {
-//             Connection con = Conexiondb.getConexion();
+public class App {
 
-//             if (con != null) {
-//                 System.out.println(" Conexión exitosa a la base de datos");
-//             } else {
-//                 System.out.println(" Error al conectar con la base de datos");
-//             }
-//         } catch (SQLException e) {
-//             System.out.println(" Error al conectar con la base de datos: " + e.getMessage());
-//             e.printStackTrace();
-//         }
-//     }
-// }
+    public static void main(String[] args) {
+        try {
+            Connection con = Conexiondb.getConexion();
+
+            if (con != null) {
+                System.out.println(" Conexión exitosa a la base de datos");
+            } else {
+                System.out.println(" Error al conectar con la base de datos");
+            }
+        } catch (SQLException e) {
+            System.out.println(" Error al conectar con la base de datos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
 
 //========================PRUEBAS ProductoDAO==============================
 
@@ -257,60 +259,60 @@
 
 //===========PRUEBAS VENTA SERVICE================
 
-// Importamos el modelo Venta para crear objetos de tipo Venta
-import models.Venta;
-// Importamos el modelo DetalleVenta para manejar los detalles de la venta
-import models.DetalleVenta;
-// Importamos el servicio VentaService que contiene la lógica de negocio
-import services.VentaService;
+// // Importamos el modelo Venta para crear objetos de tipo Venta
+// import com.project.pos_backend_2026.models.Venta;
+// // Importamos el modelo DetalleVenta para manejar los detalles de la venta
+// import com.project.pos_backend_2026.models.DetalleVenta;
+// // Importamos el servicio VentaService que contiene la lógica de negocio
+// import com.project.pos_backend_2026.services.VentaService;
 
-// Importamos ArrayList para crear listas dinámicas
-import java.util.ArrayList;
-// Importamos List para manejar colecciones de objetos
-import java.util.List;
+// // Importamos ArrayList para crear listas dinámicas
+// import java.util.ArrayList;
+// // Importamos List para manejar colecciones de objetos
+// import java.util.List;
 
-// Clase principal de la aplicación para pruebas
-public class App {
+// // Clase principal de la aplicación para pruebas
+// public class App {
 
-    // Método principal que ejecuta la prueba
-    public static void main(String[] args) {
+//     // Método principal que ejecuta la prueba
+//     public static void main(String[] args) {
 
-        // Instanciamos el servicio de ventas
-        VentaService ventaService = new VentaService();
+//         // Instanciamos el servicio de ventas
+//         VentaService ventaService = new VentaService();
 
-        // 1️ Crear el objeto venta con sus datos básicos
-        Venta venta = new Venta();
-        // Establecemos el total a pagar de la venta
-        venta.setTotalPagar(7500);
-        // Establecemos el estado de la venta
-        venta.setEstado("Pagada");
-        // Asignamos el ID del cliente (debe existir en la base de datos)
-        venta.setIdCliente(1);
-        // Asignamos el ID del usuario que realiza la venta (debe existir)
-        venta.setIdUsuario(1);
+//         // 1️ Crear el objeto venta con sus datos básicos
+//         Venta venta = new Venta();
+//         // Establecemos el total a pagar de la venta
+//         venta.setTotalPagar(7500);
+//         // Establecemos el estado de la venta
+//         venta.setEstado("Pagada");
+//         // Asignamos el ID del cliente (debe existir en la base de datos)
+//         venta.setIdCliente(1);
+//         // Asignamos el ID del usuario que realiza la venta (debe existir)
+//         venta.setIdUsuario(1);
 
-        // 2️ Crear los detalles de la venta (productos vendidos)
-        DetalleVenta d1 = new DetalleVenta();
-        // Asignamos el ID del producto vendido
-        d1.setIdProducto(1);
-        // Establecemos la cantidad vendida
-        d1.setCantidad(3);
-        // Establecemos el precio unitario del producto
-        d1.setPrecioUnitario(2500);
-        // Calculamos y asignamos el subtotal (cantidad * precio)
-        d1.setSubtotal(7500);
+//         // 2️ Crear los detalles de la venta (productos vendidos)
+//         DetalleVenta d1 = new DetalleVenta();
+//         // Asignamos el ID del producto vendido
+//         d1.setIdProducto(1);
+//         // Establecemos la cantidad vendida
+//         d1.setCantidad(3);
+//         // Establecemos el precio unitario del producto
+//         d1.setPrecioUnitario(2500);
+//         // Calculamos y asignamos el subtotal (cantidad * precio)
+//         d1.setSubtotal(7500);
 
-        // Creamos una lista para almacenar los detalles de la venta
-        List<DetalleVenta> detalles = new ArrayList<>();
-        // Agregamos el detalle creado a la lista
-        detalles.add(d1);
+//         // Creamos una lista para almacenar los detalles de la venta
+//         List<DetalleVenta> detalles = new ArrayList<>();
+//         // Agregamos el detalle creado a la lista
+//         detalles.add(d1);
 
-        // 3️ Llamamos al servicio para registrar la venta completa (cabecera +
-        // detalles)
-        // El método devuelve true si se registró correctamente
-        boolean ok = ventaService.registrarVentaCompleta(venta, detalles);
+//         // 3️ Llamamos al servicio para registrar la venta completa (cabecera +
+//         // detalles)
+//         // El método devuelve true si se registró correctamente
+//         boolean ok = ventaService.registrarVentaCompleta(venta, detalles);
 
-        // Imprimimos el resultado de la operación en la consola
-        System.out.println("Venta registrada correctamente: " + ok);
-    }
-}
+//         // Imprimimos el resultado de la operación en la consola
+//         System.out.println("Venta registrada correctamente: " + ok);
+//     }
+// }
