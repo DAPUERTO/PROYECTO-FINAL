@@ -1,7 +1,6 @@
 // Declaración del paquete donde se encuentra esta clase
 package models;
 
-// Declaración de la clase pública Usuario
 public class Usuario {
 
     // Atributo privado que almacena el identificador único del usuario
